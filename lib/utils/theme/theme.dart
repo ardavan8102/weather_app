@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/utils/colors/colors.dart';
+import 'package:weather_app/utils/constants/colors.dart';
 import 'package:weather_app/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:weather_app/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:weather_app/utils/theme/custom_themes/checkbox_theme.dart';

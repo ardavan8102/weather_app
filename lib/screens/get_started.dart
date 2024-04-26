@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:weather_app/screens/welcome.dart';
-import 'package:weather_app/utils/colors/colors.dart';
-import 'package:weather_app/utils/colors/text_strings.dart';
-import 'package:weather_app/utils/device/device_utility.dart';
+import 'package:weather_app/utils/constants/image_strings.dart';
+import 'package:weather_app/utils/constants/text_strings.dart';
 import 'package:weather_app/utils/helpers/helper_functions.dart';
+import 'package:weather_app/widgets/animation_with_title.dart';
 import 'package:weather_app/widgets/custom_page_route.dart';
 
 class GetStarted extends StatelessWidget {
@@ -17,73 +18,45 @@ class GetStarted extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Container(
-            width: myDeviceUtilities.getScreenWidth(context),
-            height: myDeviceUtilities.getScreenHeight(),
-            color:
-                dark ? myColors.dark : const Color.fromARGB(255, 227, 229, 241),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image(
-                  image: AssetImage('assets/get-started.png'),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  width: myDeviceUtilities.getScreenWidth(context) * 0.7,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Text(
-                      Texts.getStartedTitle,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: myDeviceUtilities.getScreenWidth(context) * 0.7,
-                  height: myDeviceUtilities.getScreenHeight() * 0.1,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Text(
-                      Texts.getStartedSubTitle,
-                      style: Theme.of(context).textTheme.labelMedium!.apply(
-                          color: dark ? myColors.softGrey : myColors.dark),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context, CustomPageRoute(child: WelcomePage()));
-                  }, 
-                  child: Text(
-                    'Get Started',
-                    style: Theme.of(context).textTheme.headlineSmall!.apply(color: myColors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.all(16),
-                    elevation: 0,
-                  ),
-                ),
-              ],
+        child: PageView(
+          children: [
+            imageWithTitleAndSubTitle(
+              dark: dark,
+              image: Images.getStartedAnimation1,
+              title: Texts.getStartedTitle1,
+              subTitle: Texts.getStartedSubTitle1,
+              showButton: true,
+              buttonText: 'Ardavan Eskandari',
+              buttonPadding: 12,
+              onPressed: () async {
+                final String url = 'https://github.com/ardavan8102';
+                await launchUrlString(
+                  url,
+                  mode: LaunchMode.inAppBrowserView,
+                );
+              },
             ),
-          ),
+
+            imageWithTitleAndSubTitle(
+              dark: dark,
+              image: Images.getStartedAnimation2,
+              title: Texts.getStartedTitle2,
+              subTitle: Texts.getStartedSubTitle2,
+            ),
+
+            imageWithTitleAndSubTitle(
+              dark: dark,
+              image: Images.getStartedAnimation3,
+              title: Texts.getStartedTitle3,
+              subTitle: Texts.getStartedSubTitle3,
+              showButton: true,
+              buttonText: 'Get Started',
+              buttonPadding: 16,
+              onPressed: () {
+                Navigator.push(context, CustomPageRoute(child: WelcomePage()));
+              },
+            ),
+          ],
         ),
       ),
     );
