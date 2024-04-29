@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weather_app/screens/welcome.dart';
+import 'package:weather_app/screens/navigationMenu.dart';
 import 'package:weather_app/utils/constants/image_strings.dart';
 import 'package:weather_app/utils/constants/text_strings.dart';
 import 'package:weather_app/utils/helpers/helper_functions.dart';
 import 'package:weather_app/widgets/get%20started/animation_with_title.dart';
-import 'package:weather_app/widgets/custom_page_route.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
@@ -44,7 +43,7 @@ class GetStarted extends StatelessWidget {
                   buttonText: 'Get Started',
                   buttonPadding: 16,
                   onPressed: () {
-                    Navigator.push(context, CustomPageRoute(child: WelcomePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
                   },
                 ),
               ],

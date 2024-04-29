@@ -8,4 +8,9 @@ class Texts {
 
   static const String getStartedTitle3 = "Hit The Space";
   static const String getStartedSubTitle3 = "View and check the weather of your city and other cities in the world in the simplest and most elegant way.";
+
+  // -- Navigation Bar
+  static const String homeButtonText = "Home";
+  static const String weatherButtonText = "Weather";
+  static const String aboutButtonText = "About";
 }
