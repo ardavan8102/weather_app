@@ -8,4 +8,7 @@ class Images {
   static const String thunderAndCloud = "assets/animations/thunder.json";
   static const String glowingSnowflake = "assets/animations/snowflake.json";
   static const String cyclingSun = "assets/animations/sun.json";
+
+  // -- Weather Types
+  static const String rainyWeather = "assets/icons/rain.png";
 }

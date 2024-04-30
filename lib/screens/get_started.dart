@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weather_app/screens/navigationMenu.dart';
+import 'package:weather_app/widgets/navigationMenu.dart';
 import 'package:weather_app/utils/constants/image_strings.dart';
 import 'package:weather_app/utils/constants/text_strings.dart';
 import 'package:weather_app/utils/helpers/helper_functions.dart';

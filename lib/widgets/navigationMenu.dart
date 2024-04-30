@@ -40,6 +40,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
     final dark = myHelperFunctions.isDarkMode(context);
     
     return Scaffold(
+      backgroundColor: dark ? myColors.dark : Color.fromARGB(255, 169, 177, 216),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: GNav(
@@ -64,7 +65,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
             GButton(
               icon: Icons.location_city,
               iconColor: myColors.white,
-              text: 'My City',
+              text: 'Cities',
             ),
             GButton(
               icon: Icons.question_mark,
