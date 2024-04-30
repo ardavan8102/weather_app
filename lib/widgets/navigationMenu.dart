@@ -76,6 +76,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
         ),
       ),
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: _screens,
         onPageChanged: _onPagedChanged,
