@@ -1,38 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:weather_app/screens/about.dart';
+import 'package:weather_app/screens/home.dart';
+import 'package:weather_app/screens/specific_city_weather.dart';
+import 'package:weather_app/screens/weather.dart';
 import 'package:weather_app/utils/constants/colors.dart';
 import 'package:weather_app/utils/helpers/helper_functions.dart';
-import 'package:weather_app/widgets/home/main_animation.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class NavigationMenu extends StatefulWidget {
+  const NavigationMenu({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<NavigationMenu> createState() => _NavigationMenuState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _NavigationMenuState extends State<NavigationMenu> {
+  PageController _pageController = new PageController();
+
+  int _currentIndex = 0;
+  List<Widget> _screens = [
+    HomePage(),
+    WeatherPage(),
+    MyCityPage(),
+    AboutPage(),
+  ];
+
+  void _onPagedChanged(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  void _onItemTapped(int selectedIndex) {
+    _pageController.jumpToPage(selectedIndex);
+  }
+
   @override
   Widget build(BuildContext context) {
     final dark = myHelperFunctions.isDarkMode(context);
-    int currentIndex = 0;
-
+    
     return Scaffold(
-      backgroundColor: dark ? myColors.darkContainer : myColors.primaryBackground,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: GNav(
-          selectedIndex: currentIndex,
+          selectedIndex: _currentIndex,
           backgroundColor: Colors.transparent,
           activeColor: myColors.white,
           tabBackgroundColor: dark ? Colors.grey.shade800 : Colors.blue.shade200,
           padding: EdgeInsets.all(16),
           gap: 10,
-          onTabChange: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
+          onTabChange: (index) => _onItemTapped(index),
           tabs: [
             GButton(
               icon: Icons.home,
@@ -57,14 +74,11 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Container(
-        child: Column(
-          children: [
-            // -- Top side animations
-            homeTopAnimation()
-          ],
-        ),
-      ),
+      body: PageView(
+        controller: _pageController,
+        children: _screens,
+        onPageChanged: _onPagedChanged,
+      )
     );
   }
 }

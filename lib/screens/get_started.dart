@@ -43,7 +43,7 @@ class GetStarted extends StatelessWidget {
                   buttonText: 'Get Started',
                   buttonPadding: 16,
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NavigationMenu()));
                   },
                 ),
               ],
