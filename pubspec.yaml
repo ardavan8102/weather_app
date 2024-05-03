@@ -32,7 +32,6 @@ flutter:
   # - - - - - -  LOCAL ASSETS - - - - - - #
   assets:
     - assets/
-    - assets/animations/
     - assets/icons/
   
   # - - - - - -  LOCAL FONTS - - - - - - #
