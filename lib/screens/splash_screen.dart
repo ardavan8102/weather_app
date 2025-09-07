@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:weather_app/screens/home_screen.dart';
+import 'package:weather_app/screens/weather_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 4),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => HomeScreen()
+          builder: (BuildContext context) => WeatherScreen()
         )
       )
     );
@@ -26,7 +26,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: Color(0xff9de0f2),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset('assets/icons/icon.png')
+        ],
+      )
     );
   }
 }

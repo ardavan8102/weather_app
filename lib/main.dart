@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/providers/weather_provider.dart';
-import 'package:weather_app/screens/weather_screen.dart';
+import 'package:weather_app/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Estedad',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: WeatherScreen(),
+        home: SplashScreen(),
       ),
     );
   }
