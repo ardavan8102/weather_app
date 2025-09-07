@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/providers/weather_provider.dart';
+import 'package:HavaYab/providers/weather_provider.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -86,6 +86,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 maxLength: 155,
                 maxLines: 1,
                 controller: _cityController,
+                onSubmitted: (_) {
+                  weatherProvider.fetchWeather(_cityController.text);
+                },
                 decoration: InputDecoration(
                   counterText: "", // Hide Counter text
                   alignLabelWithHint: true,
@@ -122,7 +125,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   : Column(
                     children: [
                       Text(
-                        "${weatherProvider.weather!.city} - ${weatherProvider.weather!.weatherStatus}",
+                        "${weatherProvider.weather!.city} - ${
+                          weatherProvider.weather!.weatherStatus
+                        }",
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold,
@@ -137,51 +142,51 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       ),
       
                       Text(
-                        "${((weatherProvider.weather!.temperature - 32) / 1.8).round()} °C",
+                        "دمای فعلی ${((weatherProvider.weather!.temperature - 32) / 1.8).round()} °C",
                         style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 16.0,
                         ),
                       ),
       
                       Text(
-                        "Humidity : ${weatherProvider.weather!.humidity}%",
+                        "رطوبت هوا : ${weatherProvider.weather!.humidity}%",
                         style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 16.0,
                         ),
                       ),
       
                       Text(
-                        "Minimum : ${((weatherProvider.weather!.minTemperature - 32) / 1.8).toStringAsFixed(2)} °C",
+                        "حداقل دما : ${((weatherProvider.weather!.minTemperature - 32) / 1.8).toStringAsFixed(2)} °C",
                         style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 16.0,
                         ),
                       ),
       
                       Text(
-                        "Maximum : ${((weatherProvider.weather!.maxTemperature - 32) / 1.8).toStringAsFixed(2)} °C",
+                        "حداکثر دما : ${((weatherProvider.weather!.maxTemperature - 32) / 1.8).toStringAsFixed(2)} °C",
                         style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 16.0,
                         ),
                       ),
       
                       Text(
-                        "Wind Speed : ${weatherProvider.weather!.windSpeed} KM/H",
+                        "سرعت باد : ${weatherProvider.weather!.windSpeed} کیلومتر در ساعت",
                         style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 16.0,
                         ),
                       ),
       
                       Text(
-                        "Pressure : ${weatherProvider.weather!.pressure} Millibars",
+                        "فشار : ${weatherProvider.weather!.pressure} میلی بار",
                         style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 16.0,
                         ),
                       ),
       
                       Text(
-                        "Ground Level : ${weatherProvider.weather!.groundLevelTemp} Meters",
+                        "سطح زمین : ${weatherProvider.weather!.groundLevelTemp} متر",
                         style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 16.0,
                         ),
                       ),
                     ],

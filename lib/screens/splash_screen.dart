@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:weather_app/screens/weather_screen.dart';
+import 'package:HavaYab/screens/weather_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

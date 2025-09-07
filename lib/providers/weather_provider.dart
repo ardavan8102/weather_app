@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:weather_app/models/weather.dart';
-import 'package:weather_app/services/weather_service.dart';
+import 'package:HavaYab/models/weather.dart';
+import 'package:HavaYab/services/weather_service.dart';
 
 class WeatherProvider with ChangeNotifier {
   Weather? _weather;

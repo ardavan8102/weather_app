@@ -11,7 +11,7 @@ class WeatherService {
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
-      throw Exception("failed to load data");
+      throw Exception("شهر مورد نظر یافت نشد");
     }
 
   }

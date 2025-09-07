@@ -2,13 +2,13 @@ class Weather {
   final String city;
   final String weatherStatus;
   final String description;
-  final double temperature;
-  final double minTemperature;
-  final double maxTemperature;
-  final double windSpeed;
-  final int humidity;
-  final int pressure;
-  final int groundLevelTemp;
+  final dynamic temperature;
+  final dynamic minTemperature;
+  final dynamic maxTemperature;
+  final dynamic windSpeed;
+  final dynamic humidity;
+  final dynamic pressure;
+  final dynamic groundLevelTemp;
 
   Weather({
     required this.groundLevelTemp,

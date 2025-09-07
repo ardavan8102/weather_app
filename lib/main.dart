@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/providers/weather_provider.dart';
-import 'package:weather_app/screens/splash_screen.dart';
+import 'package:HavaYab/providers/weather_provider.dart';
+import 'package:HavaYab/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => WeatherProvider(),
       child: MaterialApp(
+        locale: Locale('fa', 'IR'),
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Hava Yab',
         theme: ThemeData(
           fontFamily: 'Estedad',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
