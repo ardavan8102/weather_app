@@ -6,7 +6,7 @@ class WeatherService {
   final String baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 
   Future<Map<String, dynamic>> fetchWeather(String city) async {
-    final response = await http.get(Uri.parse('$baseURL?q=$city&appid=$apiKey&units=imperial'));
+    final response = await http.get(Uri.parse('$baseURL?q=$city&appid=$apiKey&units=imperial&lang=fa'));
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body);

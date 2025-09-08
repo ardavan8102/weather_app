@@ -30,6 +30,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               title: Text('هوا یاب'),
               titleTextStyle: TextStyle(
                 fontSize: 24,
+                fontFamily: 'Estedad',
                 fontWeight: FontWeight.w700,
                 color: Colors.black
               ),
@@ -46,7 +47,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         child: IconButton(
                           onPressed: () {}, 
                           icon: Icon(
-                            Icons.question_mark_rounded,
+                            Icons.menu_open_sharp,
                             color: Colors.blueAccent,
                           )
                         ),
@@ -113,40 +114,50 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.grey.shade700,
+                              Colors.grey.shade300,
+                            ],
+                            begin: FractionalOffset(1.0, 0.0),
+                            end: FractionalOffset(0.0, 1.0),
+                            stops: [0.5, 1.0],
+                            tileMode: TileMode.clamp,
+                          ),
                           image: DecorationImage(
-                            opacity: 0.2,
+                            opacity: 0.1,
                             image: AssetImage('assets/images/bubbles.png'),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(
                               Colors.black.withValues(alpha: 0.1),
                               BlendMode.darken,
                             ),
+                            
                           ),
-                          color: Colors.blue.shade600,
                           borderRadius: BorderRadius.circular(18)
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${weatherProvider.weather!.city} - ${
-                                    weatherProvider.weather!.weatherStatus
-                                  }",
+                                  weatherProvider.weather!.city,
                                   style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                                    fontSize: 20.0,
+                                    color: Colors.white.withValues(alpha: 0.7),
                                   ),
                                 ),
+                                
+                                SizedBox(height: 10),
                               
                                 Text(
                                   weatherProvider.weather!.description.capitalize(),
                                   style: TextStyle(
-                                    color: Colors.white.withValues(alpha: 0.7),
-                                    fontSize: 18.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24.0,
                                   ),
                                 ),
                               ],
