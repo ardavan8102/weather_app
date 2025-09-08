@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => WeatherProvider(),
       child: MaterialApp(
-        locale: Locale('fa', 'IR'),
+        locale: Locale('fa', 'IR'), 
         debugShowCheckedModeBanner: false,
         title: 'Hava Yab',
         theme: ThemeData(
