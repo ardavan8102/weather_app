@@ -1,4 +1,5 @@
 import 'package:HavaYab/extentions/string_extenction.dart';
+import 'package:HavaYab/extentions/url_extention.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:HavaYab/providers/weather_provider.dart';
@@ -20,6 +21,113 @@ class _WeatherScreenState extends State<WeatherScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        // Sidebar
+        drawer: Drawer(
+          backgroundColor: Colors.white,
+          width: MediaQuery.of(context).size.width - 100,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              SizedBox(
+                height: 100,
+                child: Container(
+                  margin: EdgeInsets.only(top: 24),
+                  padding: EdgeInsetsGeometry.all(24.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'هواشناسی هوایاب',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+
+                      Text(
+                        'v1.0.0',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 16),
+
+              Container(
+                padding: EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      onTap: () {},
+                      trailing: Icon(
+                        Icons.cloud,
+                        color: Colors.grey.shade400,
+                      ),
+                      contentPadding: EdgeInsets.all(0),
+                      title: Text("پیش بینی هوا ( به زودی)"),
+                      titleTextStyle: TextStyle(
+                        color: Colors.grey.shade400,
+                        fontSize: 16,
+                        fontFamily: "Estedad",
+                        fontWeight: FontWeight.w500
+                      ),
+                    ),
+
+                    SizedBox(height: 12),
+
+                    ListTile(
+                      onTap: () async {
+                        await LaunchURLBrowser('https://ardavaneskandari.ir/');
+                      },
+                      trailing: Icon(
+                        Icons.verified_user,
+                        color: Colors.black,
+                      ),
+                      contentPadding: EdgeInsets.all(0),
+                      title: Text("درباره سازنده"),
+                      titleTextStyle: TextStyle(
+                        color: Colors.black,
+                        fontFamily: "Estedad",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500
+                      ),
+                    ),
+
+                    SizedBox(height: 12),
+
+                    ListTile(
+                      onTap: () async {
+                        await LaunchURLBrowser('https://github.com/ardavan8102/weather_app');
+                      },
+                      trailing: Icon(
+                        Icons.source,
+                        color: Colors.black,
+                      ),
+                      contentPadding: EdgeInsets.all(0),
+                      title: Text("سورس برنامه"),
+                      titleTextStyle: TextStyle(
+                        color: Colors.black,
+                        fontFamily: "Estedad",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+
+          ),
+        ),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),
           child: SafeArea(
@@ -27,6 +135,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             top: false,
             minimum: EdgeInsets.only(top: 10),
             child: AppBar(
+              automaticallyImplyLeading: false,
               title: Text('هوا یاب'),
               titleTextStyle: TextStyle(
                 fontSize: 24,
@@ -44,18 +153,23 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           color: Colors.blue.shade100,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: IconButton(
-                          onPressed: () {}, 
-                          icon: Icon(
-                            Icons.menu_open_sharp,
-                            color: Colors.blueAccent,
-                          )
+                        child: Builder(
+                          builder: (context) {
+                            return IconButton(
+                              onPressed: () {
+                                Scaffold.of(context).openDrawer();
+                              }, 
+                              icon: Icon(
+                                Icons.menu_open_sharp,
+                                color: Colors.blueAccent,
+                              )
+                            );
+                          },
                         ),
                       ),
                     ],
                   ),
                 ),
-                
               ],
             ),
           ),
